@@ -15,9 +15,7 @@ $(function () {
 		template : $('#comment-template').html(),
 		events : {
 			'click a.upvote' : 'upvoteModel',
-			'click a.delete' : 'removeModel',
-			'click #button-done' : 'saveUpdate',
-			'click #button-cancel' : 'cancel'
+			'click a.delete' : 'removeModel'
 		},
 		initialize : function () {
 			this.listenTo(this.model, 'destroy', this.remove);
@@ -28,13 +26,7 @@ $(function () {
 			console.log(this.model.attributes);
 			this.render();
 		},
-		saveUpdate : function () {
-			this.model.save(this.itemAttributes());
-			this.render();
-		},
-		cancel : function () {
-			this.render();
-		},
+	
 		removeModel : function () {
 			this.undelegateEvents();
 			this.model.destroy();
