@@ -59,7 +59,7 @@ expressApp.delete('/comments/:id', function (request, response) {
 
 expressApp.put('/comments/:id', function (request, response) {
 	var documentAttributes = {
-		field_value : request.body.field_value
+		upvotes : parseInt(request.body.upvotes);
 	}
 	commentModel.findByIdAndUpdate(request.params.id, documentAttributes, function (err, documents) {
 		response.send(200, documents);
